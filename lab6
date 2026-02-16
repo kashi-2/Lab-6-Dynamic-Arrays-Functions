@@ -4,27 +4,28 @@ using namespace std;
 const int ARRAY_SIZE = 5;
 
 //func prototypes 
-void enterArrayData (double* arr, int size);
+void enterArrayData(double* arr, int size);
 void outputArrayData(const double* arr, int size);
 double sumArray(const double* arr, int size);
 
 int main () 
 { 
-    double * number = new(nothrow) double [ARRAY_SIZE];
+    double* numbers = new(nothrow) double [ARRAY_SIZE];
 
     if (numbers == nullptr)
     {
         cout << "Error: memory allocation failed." << endl;
         return 1;
     }
-    enterArrayData(numbers,ARRAY_SIZE);
-    outputArrayData(numbers, ARRAY_SIZE)    
+    
+    enterArrayData(numbers, ARRAY_SIZE);
+    outputArrayData(numbers, ARRAY_SIZE);    
 
     double total = sumArray(numbers, ARRAY_SIZE); 
     cout << "Sum of values: " << total << endl;
 
     delete[] numbers;
-    numbers = nullptr
+    numbers = nullptr;
 
 
     return 0;
@@ -48,9 +49,10 @@ void enterArrayData(double* arr, int size)
     cout << "Data entry complete." << endl;
 } 
 
-void outputArray Data(const double* arr, int size)
+void outputArrayData(const double* arr, int size)
 {
     cout << "Outputting array elements: ";
+    
     for (int i = 0; i < size; i++)
     {
         cout << *(arr + i) << " ";
@@ -61,5 +63,10 @@ void outputArray Data(const double* arr, int size)
 double sumArray(const double* arr, int size)
 {
     double sum = 0.0;
-    
+
+    for (int i = 0; i < size; i++)
+    {
+        sum += *(arr + i);
+    }
+    return sum;
 }
